@@ -8,17 +8,18 @@
    <children>
       <VBox prefHeight="340.0" prefWidth="500.0">
          <children>
-            <TableView prefHeight="200.0" prefWidth="200.0">
+            <TableView fx:id="animalTableView" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="120.0" text="ID" />
-                <TableColumn prefWidth="120.0" text="Breed" />
-                  <TableColumn prefWidth="120.0" text="Lifespan" />
-                  <TableColumn prefWidth="120.0" text="Price" />
+                <TableColumn fx:id="animalIdCol" prefWidth="120.0" text="ID" />
+                <TableColumn fx:id="animalBreedCol" prefWidth="120.0" text="Breed" />
+                  <TableColumn fx:id="animalLifespanCol" prefWidth="120.0" text="Lifespan" />
+                  <TableColumn fx:id="animalPriceLbl" prefWidth="120.0" text="Price" />
               </columns>
             </TableView>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Back" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Details" />
+                  <Button layoutX="449.0" layoutY="43.0" mnemonicParsing="false" text="Back" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />

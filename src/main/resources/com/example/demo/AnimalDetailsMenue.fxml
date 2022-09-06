@@ -29,14 +29,14 @@
                   <Label text="Behavior" GridPane.rowIndex="3" />
                   <Label text="Price" GridPane.rowIndex="4" />
                   <Label text="Vaccinated" GridPane.rowIndex="5" />
-                  <Label text="Label" GridPane.columnIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Label fx:id="animalIdLbl" text="Label" GridPane.columnIndex="1" />
+                  <Label fx:id="animalBreedLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Label fx:id="animalLifespanLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Label fx:id="animalBehaviorLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Label fx:id="animalPriceLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Label fx:id="animalVaccLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                   <Label text="Special" GridPane.rowIndex="6" />
-                  <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label fx:id="specialLbl" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
             </GridPane>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">

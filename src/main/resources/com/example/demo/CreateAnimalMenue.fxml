@@ -28,15 +28,15 @@
                   <Label text="Behavior" GridPane.rowIndex="3" />
                   <Label text="Price" GridPane.rowIndex="4" />
                   <Label text="Vaccinated" GridPane.rowIndex="5" />
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                  <TextField prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextField fx:id="animalIdTxt" GridPane.columnIndex="1" />
+                  <TextField fx:id="animalBreedTxt" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField fx:id="animalLifespanTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="animalBehaviorTxt" prefWidth="210.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextField fx:id="animalPriceTxt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <HBox prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                      <children>
-                        <RadioButton mnemonicParsing="false" text="Yes" />
-                        <RadioButton mnemonicParsing="false" text="No" />
+                        <RadioButton fx:id="vaccYesBtn" mnemonicParsing="false" text="Yes" />
+                        <RadioButton fx:id="vaccNoBtn" mnemonicParsing="false" text="No" />
                      </children>
                      <padding>
                         <Insets left="10.0" />
