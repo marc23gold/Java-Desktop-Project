@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static javafx.fxml.FXMLLoader.load;
@@ -44,12 +45,16 @@ public class MainMenueController implements Initializable  {
 
     public void onActionCreateAnimal(ActionEvent actionEvent) throws IOException {
         stage =(Stage)((Button) actionEvent.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/resources/com/example/demo/MainMenue.fxml"));
+        scene = load(Objects.requireNonNull(getClass().getResource("/com/example/demo/CreateAnimalMenue.fxml")));
         stage.setScene(new Scene(scene));
         stage.show();
     }
 
-    public void onActionDisplayAnimal(ActionEvent actionEvent) {
+    public void onActionDisplayAnimal(ActionEvent actionEvent) throws IOException {
+        stage =(Stage)((Button) actionEvent.getSource()).getScene().getWindow();
+        scene = load(Objects.requireNonNull(getClass().getResource("/com/example/demo/DisplayAnimalMenue.fxml")));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
 
     public void onActionExitAnimal(ActionEvent actionEvent) {
