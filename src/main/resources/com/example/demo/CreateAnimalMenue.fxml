@@ -46,8 +46,8 @@
             </GridPane>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Save" />
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Back" />
+                  <Button mnemonicParsing="false" onAction="#onActionSaveAnimal" text="Save" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionDisplayMainMenue" text="Back" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />

@@ -18,8 +18,8 @@
             </TableView>
             <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" text="Details" />
-                  <Button layoutX="449.0" layoutY="43.0" mnemonicParsing="false" text="Back" />
+                  <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#onActionDisplayAnimalMenue" text="Details" />
+                  <Button layoutX="449.0" layoutY="43.0" mnemonicParsing="false" onAction="#onActionDisplayMainMenue" text="Back" />
                </children>
                <VBox.margin>
                   <Insets top="20.0" />

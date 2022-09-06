@@ -29,4 +29,13 @@ public class MainMenueController implements Initializable  {
         System.out.println("I am clicked");
         TheLabel.setText("You clicked the button " + count++);
     }
+
+    public void onActionCreateAnimal(ActionEvent actionEvent) {
+    }
+
+    public void onActionDisplayAnimal(ActionEvent actionEvent) {
+    }
+
+    public void onActionExitAnimal(ActionEvent actionEvent) {
+    }
 }
