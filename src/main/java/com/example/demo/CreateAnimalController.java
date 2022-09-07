@@ -44,26 +44,32 @@ public class CreateAnimalController implements Initializable {
 
     public void onActionSaveAnimal(ActionEvent actionEvent) throws IOException {
 
-        int id = Integer.parseInt(animalIdTxt.getText());
-        String breed = animalBreedTxt.getText();
-        int lifespan = Integer.parseInt(animalLifespanTxt.getText());
-        String behavior = animalBehaviorTxt.getText();
-        double price = Double.parseDouble(animalPriceTxt.getText());
-        boolean isVaccinated;
-        String special = null;
+        try{
+            int id = Integer.parseInt(animalIdTxt.getText());
+            String breed = animalBreedTxt.getText();
+            int lifespan = Integer.parseInt(animalLifespanTxt.getText());
+            String behavior = animalBehaviorTxt.getText();
+            double price = Double.parseDouble(animalPriceTxt.getText());
+            boolean isVaccinated;
+            String special = null;
 
-        if(vaccYesBtn.isSelected()) {
-            isVaccinated = true;
-        } else {
-            isVaccinated = false;
+            if(vaccYesBtn.isSelected()) {
+                isVaccinated = true;
+            } else {
+                isVaccinated = false;
+            }
+
+            DataProvider.addAnimal(new Dog( id, breed, lifespan, behavior, price, isVaccinated, special));
+
+            stage =(Stage)((Button) actionEvent.getSource()).getScene().getWindow();
+            scene = load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenue.fxml")));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        } catch(NumberFormatException e) {
+            System.out.println("Please enter valid values  in text fields")
         }
 
-        DataProvider.addAnimal(new Dog( id, breed, lifespan, behavior, price, isVaccinated, special));
 
-        stage =(Stage)((Button) actionEvent.getSource()).getScene().getWindow();
-        scene = load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenue.fxml")));
-        stage.setScene(new Scene(scene));
-        stage.show();
 
     }
 }

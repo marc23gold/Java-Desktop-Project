@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.model.Animal;
+import com.example.demo.model.Dog;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -26,6 +28,23 @@ public class AnimalDetailsController implements Initializable {
     public Label animalPriceLbl;
     public Label animalVaccLbl;
     public Label specialLbl;
+
+    public void sendAnimal(Animal dog) {
+        animalIdLbl.setText(String.valueOf(dog.getId()));
+        animalBreedLbl.setText(String.valueOf(dog.getBreed()));
+        animalLifespanLbl.setText(String.valueOf(dog.getLifespan()));
+        animalPriceLbl.setText(String.valueOf(dog.getPrice()));
+        animalBehaviorLbl.setText(String.valueOf(dog.getBehavior()));
+        if(dog.isVaccinated()) {
+            animalVaccLbl.setText("Yes");
+        } else {
+            animalVaccLbl.setText("No");
+        }
+
+        if(dog instanceof Dog) {
+            specialLbl.setText(((Dog) dog).getSpecial());
+        }
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

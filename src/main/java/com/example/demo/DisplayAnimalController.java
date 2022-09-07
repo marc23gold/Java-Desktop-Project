@@ -5,6 +5,7 @@ import com.example.demo.model.DataProvider;
 import com.example.demo.model.Dog;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -63,19 +64,29 @@ public class DisplayAnimalController implements Initializable {
 
     public Animal selectAnimal(int id) {
         for(Animal dog : DataProvider.getAllAnimals())
-        if(dog.getId() == id) {
-            return dog;
+            if(dog.getId() == id) {
+                return dog;
         }
         return null;
     }
 
     public ObservableList<Animal> filter(String breed) {
+        if(!(DataProvider.getAllFilteredAnimals().isEmpty())) {
+            DataProvider.getAllFilteredAnimals().clear();
+        }
         for(Animal dog : DataProvider.getAllAnimals()) {
                 if(dog.getBreed().contains(breed)) {
                     DataProvider.getAllFilteredAnimals().add(dog);
                 }
         }
-        return DataProvider.getAllFilteredAnimals();
+
+        if(DataProvider.getAllFilteredAnimals().isEmpty()) {
+            return DataProvider.getAllAnimals();
+        } else {
+            return DataProvider.getAllFilteredAnimals();
+        }
+
+
     }
 
     @Override
@@ -83,6 +94,8 @@ public class DisplayAnimalController implements Initializable {
 
         System.out.println("I am initialized");
         animalTableView.setItems(DataProvider.getAllAnimals());
+        //animalTableView.setItems(filter("Grey Hound"));
+
 
         animalIdCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
         animalBreedCol.setCellValueFactory(new PropertyValueFactory<>("breed"));
@@ -96,7 +109,7 @@ public class DisplayAnimalController implements Initializable {
         }
 
         if(delete(3)) {
-            System.out.println("Deleted sucess");
+            System.out.println("Deleted success");
         } else {
             System.out.println("Delete failed");
         }
@@ -105,10 +118,21 @@ public class DisplayAnimalController implements Initializable {
     }
 
     public void onActionDisplayAnimalMenue(ActionEvent actionEvent) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/com/example/demo/AnimalDetailsMenue.fxml"));
+        loader.load();
+
+        AnimalDetailsController ADMController = loader.getController();
+        ADMController.sendAnimal(animalTableView.getSelectionModel().getSelectedItem());
+
+
         stage =(Stage)((Button) actionEvent.getSource()).getScene().getWindow();
-        scene = load(Objects.requireNonNull(getClass().getResource("/com/example/demo/AnimalDetailsMenue.fxml")));
+        Parent scene = loader.getRoot();
         stage.setScene(new Scene(scene));
         stage.show();
+
+
     }
 
     public void onActionDisplayMainMenue(ActionEvent actionEvent) throws IOException {
