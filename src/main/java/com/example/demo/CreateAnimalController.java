@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.model.DataProvider;
+import com.example.demo.model.Dog;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -40,6 +42,28 @@ public class CreateAnimalController implements Initializable {
         stage.show();
     }
 
-    public void onActionSaveAnimal(ActionEvent actionEvent) {
+    public void onActionSaveAnimal(ActionEvent actionEvent) throws IOException {
+
+        int id = Integer.parseInt(animalIdTxt.getText());
+        String breed = animalBreedTxt.getText();
+        int lifespan = Integer.parseInt(animalLifespanTxt.getText());
+        String behavior = animalBehaviorTxt.getText();
+        double price = Double.parseDouble(animalPriceTxt.getText());
+        boolean isVaccinated;
+        String special = null;
+
+        if(vaccYesBtn.isSelected()) {
+            isVaccinated = true;
+        } else {
+            isVaccinated = false;
+        }
+
+        DataProvider.addAnimal(new Dog( id, breed, lifespan, behavior, price, isVaccinated, special));
+
+        stage =(Stage)((Button) actionEvent.getSource()).getScene().getWindow();
+        scene = load(Objects.requireNonNull(getClass().getResource("/com/example/demo/MainMenue.fxml")));
+        stage.setScene(new Scene(scene));
+        stage.show();
+
     }
 }

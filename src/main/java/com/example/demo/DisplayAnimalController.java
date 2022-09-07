@@ -2,6 +2,8 @@ package com.example.demo;
 
 import com.example.demo.model.Animal;
 import com.example.demo.model.DataProvider;
+import com.example.demo.model.Dog;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -28,6 +30,54 @@ public class DisplayAnimalController implements Initializable {
     public TableColumn<Animal, Double> animalPriceLbl;
     public TableView<Animal> animalTableView;
 
+
+    public boolean search(int id) {
+        for(Animal dog : DataProvider.getAllAnimals()){
+            if(dog.getId() == id) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean update(int id, Animal animal) {
+        int index = -1;
+        for(Animal dog : DataProvider.getAllAnimals()) {
+            index++;
+            if(dog.getId() == id){
+                DataProvider.getAllAnimals().set(index, animal);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean delete(int id) {
+        for(Animal dog : DataProvider.getAllAnimals()) {
+            if(dog.getId() == id) {
+                return DataProvider.getAllAnimals().remove(dog);
+            }
+        }
+        return false;
+    }
+
+    public Animal selectAnimal(int id) {
+        for(Animal dog : DataProvider.getAllAnimals())
+        if(dog.getId() == id) {
+            return dog;
+        }
+        return null;
+    }
+
+    public ObservableList<Animal> filter(String breed) {
+        for(Animal dog : DataProvider.getAllAnimals()) {
+                if(dog.getBreed().contains(breed)) {
+                    DataProvider.getAllFilteredAnimals().add(dog);
+                }
+        }
+        return DataProvider.getAllFilteredAnimals();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -38,6 +88,20 @@ public class DisplayAnimalController implements Initializable {
         animalBreedCol.setCellValueFactory(new PropertyValueFactory<>("breed"));
         animalLifespanCol.setCellValueFactory(new PropertyValueFactory<>("lifespan"));
         animalPriceLbl.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        if(update(5, new Dog(5, "Grey Hound", 13, "funny", 35.44, true, "kind"))) {
+            System.out.println("Update successful");
+        } else {
+            System.out.println("Update failed");
+        }
+
+        if(delete(3)) {
+            System.out.println("Deleted sucess");
+        } else {
+            System.out.println("Delete failed");
+        }
+
+        animalTableView.getSelectionModel().select(selectAnimal(3));
     }
 
     public void onActionDisplayAnimalMenue(ActionEvent actionEvent) throws IOException {
