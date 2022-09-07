@@ -58,5 +58,6 @@ public class MainMenueController implements Initializable  {
     }
 
     public void onActionExitAnimal(ActionEvent actionEvent) {
+        System.exit(0);
     }
 }
