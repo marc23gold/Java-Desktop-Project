@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import com.example.demo.model.Animal;
+import com.example.demo.model.DataProvider;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -7,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -19,15 +22,22 @@ import static javafx.fxml.FXMLLoader.load;
 public class DisplayAnimalController implements Initializable {
     Stage stage;
     Parent scene;
-    public TableColumn animalIdCol;
-    public TableColumn animalBreedCol;
-    public TableColumn animalLifespanCol;
-    public TableColumn animalPriceLbl;
-    public TableView animalTableView;
+    public TableColumn<Animal, Integer> animalIdCol;
+    public TableColumn<Animal, String> animalBreedCol;
+    public TableColumn<Animal, Integer> animalLifespanCol;
+    public TableColumn<Animal, Double> animalPriceLbl;
+    public TableView<Animal> animalTableView;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         System.out.println("I am initialized");
+        animalTableView.setItems(DataProvider.getAllAnimals());
+
+        animalIdCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        animalBreedCol.setCellValueFactory(new PropertyValueFactory<>("breed"));
+        animalLifespanCol.setCellValueFactory(new PropertyValueFactory<>("lifespan"));
+        animalPriceLbl.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 
     public void onActionDisplayAnimalMenue(ActionEvent actionEvent) throws IOException {
