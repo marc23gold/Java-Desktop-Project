@@ -66,7 +66,8 @@ public class CreateAnimalController implements Initializable {
             stage.setScene(new Scene(scene));
             stage.show();
         } catch(NumberFormatException e) {
-            System.out.println("Please enter valid values  in text fields")
+            System.out.println("Please enter valid values  in text fields");
+            System.out.println("Exception: " + e.getMessage());
         }
 
 
